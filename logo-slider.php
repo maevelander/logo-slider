@@ -3,7 +3,7 @@
 Plugin Name: Logo Slider
 Plugin URI: http://www.wordpress.org/extend/plugins/logo-slider
 Description:  Add a logo slideshow carousel to your site quicky and easily.
-Version: 1.4.3
+Version: 1.4.4
 Author: Enigma Plugins
 Author URI: http://www.enigmaplugins.com
 */
@@ -555,7 +555,7 @@ function logo_slider($args = array(), $content = null) {
 	if( $iPod || $iPhone ){
             $data_chunks = array_chunk($wp_logo_slider_images, $img_num1);
 	}else if($iPad){
-            $data_chunks = array_chunk($wp_logo_slider_images, $img_num1);
+            $data_chunks = array_chunk($wp_logo_slider_images, $img_num4);
 	}else if($Android){
             $data_chunks = array_chunk($wp_logo_slider_images, $img_num1);
 	}else if($webOS){
@@ -668,6 +668,7 @@ function wp_logo_slider_style() {
 		overflow: hidden;
 		list-style:none;
 		background:<?php echo $wp_logo_slider_settings['bgcolour']; ?>;
+                text-align:center;
 	}
 	.slide{
 		list-style:none;
