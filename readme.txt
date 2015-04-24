@@ -78,6 +78,12 @@ If you've tried all the obvious stuff and it's still not working please request 
 
 == Changelog ==
 
+= 1.4.5 =
+* Off Buttons issue - Fixed.
+* Function renamed for admin styles.
+* Function for loading plugin text domain fixed.
+* Some code indentation.
+
 = 1.4.4 =
 * Number of logos to be displayed in iPad - Fixed
 
