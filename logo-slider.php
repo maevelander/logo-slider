@@ -3,11 +3,12 @@
 Plugin Name: Logo Slider
 Plugin URI: http://www.wordpress.org/extend/plugins/logo-slider
 Description:  Add a logo slideshow carousel to your site quicky and easily.
-Version: 1.4.5
+Version: 1.4.6
 Author: Enigma Plugins
 Author URI: http://www.enigmaplugins.com
+Text Domain: logo-slider
+Domain Path: /languages
 */
-
 
 /*
 ///////////////////////////////////////////////
@@ -15,16 +16,7 @@ This section defines the variables that
 will be used throughout the plugin
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
-
-
 error_reporting(0);
-
-// Localization / Internationalization
-add_action( 'plugins_loaded', 'lgs_plugin_load_textdomain' );
-function lgs_plugin_load_textdomain() {
-    load_plugin_textdomain( 'lgs', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-
 
 // define our defaults (filterable)
 $wp_logo_defaults = apply_filters('wp_logo_defaults', array(
@@ -79,7 +71,6 @@ function wp_logo_plugin_action_links($links) {
     return $links;
 }
 
-
 /*
 ///////////////////////////////////////////////
 this function is the code that gets loaded when the
@@ -133,7 +124,7 @@ function wp_logo_handle_upload() {
     // if the uploaded file is NOT an image
     if(strpos($type, 'image') === FALSE) {
         unlink($file); // delete the file
-        echo '<div class="error" id="message"><p>'.__('Sorry, but the file you uploaded does not seem to be a valid image. Please try again.','lgs').'</p></div>';
+        echo '<div class="error" id="message"><p>'.__('Sorry, but the file you uploaded does not seem to be a valid image. Please try again.','logo-slider').'</p></div>';
         return;
     }
 
@@ -222,7 +213,7 @@ function wp_logo_slider_settings_update_check() {
     global $wp_logo_slider_settings;
     if(isset($wp_logo_slider_settings['update'])) {
         echo '<div class="updated fade" id="message">
-                <p>'.__('Wordpress Logo Slider Settings <strong>'.$wp_logo_slider_settings['update'],'lgs').'</strong>
+                <p>'.__('Wordpress Logo Slider Settings <strong>'.$wp_logo_slider_settings['update'],'logo-slider').'</strong>
                 </p>
               </div>';
 	
@@ -236,7 +227,7 @@ function wp_logo_slider_settings_update_check() {
 function wp_logo_slider_images_update_check() {
     global $wp_logo_slider_images;
     if($wp_logo_slider_images['update'] == 'Added' || $wp_logo_slider_images['update'] == 'Deleted' || $wp_logo_slider_images['update'] == 'Updated') {
-	echo '<div class="updated fade" id="message"><p>'.__('Image(s) '.$wp_logo_slider_images['update'].' Successfully','lgs').'</p></div>';
+	echo '<div class="updated fade" id="message"><p>'.__('Image(s) '.$wp_logo_slider_images['update'].' Successfully','logo-slider').'</p></div>';
 	unset($wp_logo_slider_images['update']);
 	update_option('wp_logo_slider_images', $wp_logo_slider_images);
     }
@@ -252,16 +243,16 @@ on the admin page. it's mostly form markup.
 function wp_logo_images_admin() { ?>
     <?php global $wp_logo_slider_images; ?>
     <?php wp_logo_slider_images_update_check(); ?>
-    <h2><?php _e('Wordpress LogoSlider Images','lgs'); ?></h2>
+    <h2><?php _e('Wordpress LogoSlider Images','logo-slider'); ?></h2>
 	
     <table class="form-table">
-	<tr valign="top"><th scope="row"><?php _e('Upload New Image','lgs') ?></th>
+	<tr valign="top"><th scope="row"><?php _e('Upload New Image','logo-slider') ?></th>
             <td>
                 <form enctype="multipart/form-data" method="post" action="?page=wp_logo_slider">
                     <input type="hidden" name="post_id" id="post_id" value="0" />
                     <input type="hidden" name="action" id="action" value="wp_handle_upload" />
                     
-                    <label for="logo_images"><?php _e('Select a File: ','lgs') ?></label>
+                    <label for="logo_images"><?php _e('Select a File: ','logo-slider') ?></label>
                     <input type="file" name="logo_images" id="logo_images" />
                     <input type="submit" class="button-primary" name="html-upload" value="Upload" />
 		</form>
@@ -271,7 +262,7 @@ function wp_logo_images_admin() { ?>
     <br />
 	
     <p style="border:2px solid #999; border-radius: 10px; font-size: 12px; padding: 6px 10px; width: 24%;">
-        <strong>Note: </strong>Drag &amp; Drop is auto save.
+        <strong><?php _e('Note:', 'hmpf') ?> </strong><?php _e('Drag &amp; Drop is auto save.','hmpf') ?>
     </p>
         
     <?php
@@ -280,16 +271,16 @@ function wp_logo_images_admin() { ?>
         <table class="widefat fixed" cellspacing="0" id="image_sort" style="width:100%; table-layout:inherit;">
             <thead>
                 <tr>
-                    <th scope="col" class="column-slug"><?php _e('Image','lgs') ?></th>
-                    <th scope="col"><?php _e('Image Links To','lgs') ?></th>
-                    <th scope="col" class="column-slug"><?php _e('Actions','lgs') ?></th>
+                    <th scope="col" class="column-slug"><?php _e('Image','logo-slider') ?></th>
+                    <th scope="col"><?php _e('Image Links To','logo-slider') ?></th>
+                    <th scope="col" class="column-slug"><?php _e('Actions','logo-slider') ?></th>
 		</tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th scope="col" class="column-slug"><?php _e('Image','lgs') ?></th>
-                    <th scope="col"><?php _e('Image Links To','lgs') ?></th>
-                    <th scope="col" class="column-slug"><?php _e('Actions','lgs') ?></th>
+                    <th scope="col" class="column-slug"><?php _e('Image','logo-slider') ?></th>
+                    <th scope="col"><?php _e('Image Links To','logo-slider') ?></th>
+                    <th scope="col" class="column-slug"><?php _e('Actions','logo-slider') ?></th>
 		</tr>
             </tfoot>
             <tbody>
@@ -315,7 +306,6 @@ function wp_logo_images_admin() { ?>
                     <?php endforeach; ?>
                     <input type="hidden" name="wp_logo_slider_images[update]" value="Updated" />
 		</form>
-		
             </tbody>
 	</table>
 <?php
@@ -374,7 +364,7 @@ add_action('wp_ajax_list_update_order','order_list');
 function wp_logo_settings_admin() {
     wp_logo_slider_settings_update_check();
 ?>
-    <h2><?php _e('Wordpress Logo Slider Settings','lgs'); ?></h2>
+    <h2><?php _e('Wordpress Logo Slider Settings','logo-slider'); ?></h2>
     <form method="post" action="options.php">
     <?php
         settings_fields('wp_logo_slider_settings');
@@ -382,90 +372,90 @@ function wp_logo_settings_admin() {
     ?>
 	<table class="form-table">
             <tr>
-                <th scope="row"><?php _e('Size','lgs') ?></th>
+                <th scope="row"><?php _e('Size','logo-slider') ?></th>
 		<td>
-                    <?php _e('Width: ','lgs') ?>
+                    <?php _e('Width: ','logo-slider') ?>
                     <input type="text" name="wp_logo_slider_settings[slider_width]" value="<?php echo $options['slider_width'] ?>" size="4" /> 
-                    <?php _e('Height: ','lgs') ?>
+                    <?php _e('Height: ','logo-slider') ?>
                     <input type="text" name="wp_logo_slider_settings[slider_height]" value="<?php echo $options['slider_height'] ?>" size="4" />
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Images Per Slide','lgs') ?></th>
+                <th scope="row"><?php _e('Images Per Slide','logo-slider') ?></th>
 		<td>
                     <select name="wp_logo_slider_settings[num_img]">
                         <option value="1" <?php echo ($options['num_img'] == '1' ? 'selected="selected"' : '') ?>>
-                            <?php _e('1','lgs') ?>
+                            <?php _e('1','logo-slider') ?>
                         </option>
                         <option value="2" <?php echo ($options['num_img'] == '2' ? 'selected="selected"' : '') ?>>
-                            <?php _e('2','lgs') ?>
+                            <?php _e('2','logo-slider') ?>
                         </option>
                         <option value="3" <?php echo ($options['num_img'] == '3' ? 'selected="selected"' : '') ?>>
-                            <?php _e('3','lgs') ?>
+                            <?php _e('3','logo-slider') ?>
                         </option>
                         <option value="4" <?php echo ($options['num_img'] == '4' ? 'selected="selected"' : '') ?>>
-                            <?php _e('4','lgs') ?>
+                            <?php _e('4','logo-slider') ?>
                         </option>
                         <option value="5" <?php echo ($options['num_img'] == '5' ? 'selected="selected"' : '') ?>>
-                            <?php _e('5','lgs') ?>
+                            <?php _e('5','logo-slider') ?>
                         </option>
                         <option value="6" <?php echo ($options['num_img'] == '6' ? 'selected="selected"' : '') ?>>
-                            <?php _e('6','lgs') ?>
+                            <?php _e('6','logo-slider') ?>
                         </option>
                         <option value="7" <?php echo ($options['num_img'] == '7' ? 'selected="selected"' : '') ?>>
-                            <?php _e('7','lgs') ?>
+                            <?php _e('7','logo-slider') ?>
                         </option>
                         <option value="8" <?php echo ($options['num_img'] == '8' ? 'selected="selected"' : '') ?>>
-                            <?php _e('8','lgs') ?>
+                            <?php _e('8','logo-slider') ?>
                         </option>
                     </select>
-                    <small><?php _e('Number of logos per slide','lgs') ?></small>
+                    <small><?php _e('Number of logos per slide','logo-slider') ?></small>
                 </td>
             </tr>        
             <tr>
-                <th scope="row"><?php _e('Background Colour','lgs') ?></th>
+                <th scope="row"><?php _e('Background Colour','logo-slider') ?></th>
 		<td>
                     <input type="text" name="wp_logo_slider_settings[bgcolour]" value="<?php echo $options['bgcolour'] ?>" />
-                    <small><?php _e('Format: ','lgs') ?>#FFFFFF</small>
+                    <small><?php _e('Format: ','logo-slider') ?>#FFFFFF</small>
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Open logo links in New Window','lgs') ?></th>
+                <th scope="row"><?php _e('Open logo links in New Window','logo-slider') ?></th>
 		<td>
                     <input type="checkbox" name="wp_logo_slider_settings[new_window]" <?php echo ($options['new_window'] == 'on' ? 'checked="checked"' : '' ) ?> />
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Select Slider','lgs') ?></th>
+                <th scope="row"><?php _e('Select Slider','logo-slider') ?></th>
 		<td>
                     <select name="wp_logo_slider_settings[select_slider]">
                         <option value="slide" <?php echo ($options['select_slider'] == 'slide' ? 'selected="selected"' : '' ) ?>>
-                            <?php _e('Slide','lgs') ?>
+                            <?php _e('Slide','logo-slider') ?>
                         </option>
                         <option value="fade" <?php echo ($options['select_slider'] == 'fade' ? 'selected="selected"' : '' ) ?>>
-                            <?php _e('Fade','lgs') ?>
+                            <?php _e('Fade','logo-slider') ?>
                         </option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Auto Slide','lgs') ?></th>
+                <th scope="row"><?php _e('Auto Slide','logo-slider') ?></th>
 		<td id="arrow-style"> 
-                    <?php _e('ON','lgs') ?>
+                    <?php _e('ON','logo-slider') ?>
                     <input type="radio" name="wp_logo_slider_settings[auto_slide]" value="1" <?php if($options['auto_slide']==1){echo 'checked="checked"';}?> />&nbsp; &nbsp;
-                    <?php _e('OFF','lgs') ?>
+                    <?php _e('OFF','logo-slider') ?>
                     <input type="radio" name="wp_logo_slider_settings[auto_slide]" value="2" <?php if($options['auto_slide']==2){echo 'checked="checked"';}?>/>
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Auto Slide Time','lgs') ?></th>
+                <th scope="row"><?php _e('Auto Slide Time','logo-slider') ?></th>
 		<td>
                     <input type="text" name="wp_logo_slider_settings[auto_slide_time]" value="<?php echo $options['auto_slide_time'] ?>" size="4" /> 
-                    <small><?php _e('Set auto slide duration in seconds','lgs') ?></small>
+                    <small><?php _e('Set auto slide duration in seconds','logo-slider') ?></small>
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Arrow Style','lgs') ?></th>
+                <th scope="row"><?php _e('Arrow Style','logo-slider') ?></th>
 		<td id="arrow-style"> 
                     <p>
                         <img src="<?php echo plugin_dir_url(__FILE__); ?>/arrows/off.png" width="28" height="40" alt="" />
@@ -510,16 +500,16 @@ function wp_logo_settings_admin() {
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row"><?php _e('Custom CSS','lgs') ?></th>
+                <th scope="row"><?php _e('Custom CSS','logo-slider') ?></th>
 		<td>
                     <textarea name="wp_logo_slider_settings[custom_css]" rows="6" cols="70"><?php echo $options['custom_css']; ?></textarea>
                 </td>
             </tr>
-                <input type="hidden" name="wp_logo_slider_settings[update]" value="UPDATED" />
+                <input type="hidden" name="wp_logo_slider_settings[update]" value="<?php _e('UPDATED','logo-slider'); ?>" />
 	</table>
         
         <p class="submit">
-            <input type="submit" class="button-primary" value="<?php _e('Save Settings','lgs') ?>" />
+            <input type="submit" class="button-primary" value="<?php _e('Save Settings','logo-slider') ?>" />
         </p>
     </form>
     
@@ -534,8 +524,8 @@ function wp_logo_settings_admin() {
     <?php
         endforeach;
     ?>
-        <input type="hidden" name="wp_logo_slider_settings[update]" value="RESET" />
-        <input type="submit" class="button" value="<?php _e('Reset Settings','lgs') ?>" />
+        <input type="hidden" name="wp_logo_slider_settings[update]" value="<?php _e('RESET','logo-slider'); ?>" />
+        <input type="submit" class="button" value="<?php _e('Reset Settings','logo-slider') ?>" />
     </form>
     <!-- End Reset Option -->
 
