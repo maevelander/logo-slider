@@ -77,6 +77,8 @@ If you've tried all the obvious stuff and it's still not working please request 
 2. The settings screen in WP-Admin
 
 == Changelog ==
+= 1.4.6 =
+* Missing Strings mark for translation.
 
 = 1.4.5 =
 * Off Buttons issue - Fixed.
