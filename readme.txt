@@ -3,7 +3,7 @@ Contributors: EnigmaWeb
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CEJ9HFWJ94BG4
 Tags: logo slide, logo slideshow, logo slide show, logo carousel, image carousel, logo slider, sponsors, logo showcase
 Requires at least: 3.1
-Tested up to: 4.1
+Tested up to: 4.3.1
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -77,8 +77,9 @@ If you've tried all the obvious stuff and it's still not working please request 
 2. The settings screen in WP-Admin
 
 == Changelog ==
+
 = 1.4.6 =
-* Missing Strings mark for translation.
+* Updated text domain for the plugin repository's new translations
 
 = 1.4.5 =
 * Off Buttons issue - Fixed.
@@ -123,6 +124,15 @@ If you've tried all the obvious stuff and it's still not working please request 
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.4.6 =
+* Updated text domain for the plugin repository's new translations
+
+= 1.4.5 =
+* Off Buttons issue - Fixed.
+* Function renamed for admin styles.
+* Function for loading plugin text domain fixed.
+* Some code indentation.
 
 = 1.4.4 =
 * Number of logos to be displayed in iPad - Fixed
