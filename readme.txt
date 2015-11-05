@@ -78,6 +78,9 @@ If you've tried all the obvious stuff and it's still not working please request 
 
 == Changelog ==
 
+= 1.4.7 =
+* Animation issue fixed.
+
 = 1.4.6 =
 * Updated text domain for the plugin repository's new translations
 
