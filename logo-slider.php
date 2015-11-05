@@ -3,7 +3,7 @@
 Plugin Name: Logo Slider
 Plugin URI: http://www.wordpress.org/extend/plugins/logo-slider
 Description:  Add a logo slideshow carousel to your site quicky and easily.
-Version: 1.4.6
+Version: 1.4.7
 Author: Enigma Plugins
 Author URI: http://www.enigmaplugins.com
 Text Domain: logo-slider
@@ -690,12 +690,8 @@ function wp_slider_shortcode($atts) {
 
 add_action('wp_print_scripts', 'wp_LogoSlider_scripts');
 function wp_LogoSlider_scripts() {
-    $link = dirname(__DIR__).'/wp-catalogue-pro/includes/js/jquery.cycle2.js';
-    
-    if(!file_exists($link)){
-        if(!is_admin())
-	wp_enqueue_script('cycle', WP_CONTENT_URL.'/plugins/logo-slider/lgs_jquery.cycle2.js', array('jquery'), '', true);
-    }
+    if(!is_admin())
+    wp_enqueue_script('cycle', WP_CONTENT_URL.'/plugins/logo-slider/lgs_jquery.cycle2.js', array('jquery'), '', true);
 }
 
 add_action( 'wp_head', 'wp_logo_slider_style' );
