@@ -105,9 +105,6 @@ function ls_plugin_menu() {
 //++++++++++++++_ Require Files
 
 require "includes/ls_database.php";
-add_action( 'plugins_loaded', 'lsp_table_sliders' );
-add_action( 'plugins_loaded', 'lsp_table_images' );
-
 
 require "ls_logoslider.php";
 
