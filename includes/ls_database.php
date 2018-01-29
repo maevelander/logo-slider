@@ -9,57 +9,58 @@ global $lsp_table_sliders_version;
 $lsp_table_sliders_version = "1.0";
 
 function lsp_table_sliders(){
-    lsp_creat_table_sliders();
+    lsp_create_table_sliders();
 }
 
-function lsp_creat_table_sliders(){
-    global $wpdb;
-    global $lsp_table_sliders_version;
-	
-    $table_sliders = $wpdb->prefix."lsp_sliders";
-    $slider_ver = get_option("lsp_table_sliders_version");
-	
-    $check_table_slider = $wpdb->get_var("SHOW TABLES LIKE '$table_sliders'");
-	
-    if($check_table_slider != $table_sliders ||  $slider_ver != $lsp_table_sliders_version ) {
-         $lsp_slider_sql = "CREATE TABLE ".$table_sliders." (
+function lsp_create_table_sliders(){
+	global $wpdb;
+	global $lsp_table_sliders_version;
+
+	$table_sliders = $wpdb->prefix."lsp_sliders";
+	$slider_ver = get_option("lsp_table_sliders_version");
+
+	$check_table_slider = $wpdb->get_var("SHOW TABLES LIKE '$table_sliders'");
+
+	if($check_table_slider != $table_sliders ||  $slider_ver != $lsp_table_sliders_version ) {
+		$lsp_slider_sql = "CREATE TABLE ".$table_sliders." (
                            `slider_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                            `slider_name` VARCHAR(255) NOT NULL COLLATE 'utf8_general_ci',
                            `slider_shortcode` VARCHAR(255) NOT NULL COLLATE 'utf8_general_ci',
                            `slider_shortname` VARCHAR(255) NOT NULL COLLATE 'utf8_general_ci',
                            PRIMARY KEY (slider_id)
                            )COLLATE='utf8_general_ci', ENGINE = 'InnoDB';";
-			
-	require_once(ABSPATH.'wp-admin/includes/upgrade.php');
-        dbDelta($lsp_slider_sql);
-		
-	update_option("lsp_table_sliders_version", $lsp_table_sliders_version);
-    }
-    else{
-    	add_option("lsp_table_sliders_version", $lsp_table_sliders_version);
-    }
-    
-    //  Add data from Logo Slider Free Version
-    $lsp_prefix = $wpdb->prefix;
-    
-    $lsp_option_images = get_option('wp_logo_slider_images');
-    $lsp_option_settings = get_option('wp_logo_slider_settings');
-    
-    if(($lsp_option_settings) || ($lsp_option_images)){
-        
-        $lsp_option_insert_slider = "Insert Into ".$lsp_prefix."lsp_sliders(slider_name,slider_shortcode,slider_shortname)
-                                     Value('First Slider','[lsp_slider slider=first_slider]','first_slider')";
-        mysql_query($lsp_option_insert_slider);
-    }
-    
-//    $lsp_sql = "Select * From ".$wpdb->prefix."lsp_sliders Where slider_shortname = 'first_slider'";
-//    $lsp_qry = mysql_query($lsp_sql);
-//    $lsp_num = mysql_num_rows($lsp_qry);
+
+		require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+		dbDelta($lsp_slider_sql);
+
+		update_option("lsp_table_sliders_version", $lsp_table_sliders_version);
+	}
+	else{
+		add_option("lsp_table_sliders_version", $lsp_table_sliders_version);
+	}
+	// @TODO Checking required for duplicate slider from the previous version of the plugin
+	//  Add data from Logo Slider Free Version
+	$lsp_prefix = $wpdb->prefix;
+
+	$lsp_option_images = get_option('wp_logo_slider_images');
+	$lsp_option_settings = get_option('wp_logo_slider_settings');
+
+	if(($lsp_option_settings) && ($lsp_option_images)){
+
+		$lsp_option_insert_slider = "insert into ".$lsp_prefix."lsp_sliders (`slider_name`,`slider_shortcode`,`slider_shortname`) value ('First Slider','[lsp_slider slider=first_slider]','first_slider')";
+		$wpdb->query($lsp_option_insert_slider);
+	}
+
+//	$lsp_sql = "select * from ".$wpdb->prefix."lsp_sliders where slider_shortname = 'first_slider'";
+//	$lsp_qry = $wpdb->get_results($lsp_sql);
+//	$lsp_num = $wpdb->num_rows($lsp_qry);
 //
-//    if($lsp_num > 1){
-//	mysql_query("Delete From ".$wpdb->prefix."lsp_sliders Where slider_shortname = 'first_slider'");
-//    }
+//	if($lsp_num > 1){
+//		$wpdb->query("delete from ".$wpdb->prefix."lsp_sliders where slider_shortname = 'first_slider'");
+//	}
 }
+
+
 
 //++++++++++++++_ Create Table: lsp_images
 global $lsp_table_images_version;
@@ -147,8 +148,8 @@ function lsp_creat_table_images(){
         add_option('lsp_slider_bgcolor', $lsp_slider_bgcolor_opt, 'yes');
         add_option('lsp_slider_css', $lsp_slider_css_opt, 'yes');
         
-        delete_option('wp_logo_slider_images');
-        delete_option('wp_logo_slider_settings');
+//        delete_option('wp_logo_slider_images');
+//        delete_option('wp_logo_slider_settings');
     }
 }
 
