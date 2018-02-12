@@ -1,17 +1,39 @@
-//+++++++++++++_ Image Media Uploader
-jQuery(document).ready(function() {
+jQuery(document).ready(function ($) {
+// Uploading files
+    var file_frame;
 
-    jQuery('.lsp_upload_button').click(function() {
-        targetfield = jQuery(this).parents().find('.lsp_upload_url');
-        tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-        return false;
+    $('.lsp_upload_button').on('click', function (event) {
+
+        event.preventDefault();
+
+        // If the media frame already exists, reopen it.
+        if (file_frame) {
+            file_frame.open();
+            return;
+        }
+
+
+        // Create the media frame.
+        file_frame = wp.media.frames.file_frame = wp.media({
+            title: $(this).data('uploader_title'),
+            button: {
+                text: $(this).data('uploader_button_text'),
+            },
+            multiple: false  // Set to true to allow multiple files to be selected
+        });
+
+        // When an image is selected, run a callback.
+        file_frame.on('select', function () {
+            // We set multiple to false so only get one image from the uploader
+            attachment = file_frame.state().get('selection').first().toJSON();
+            // Send the attachment URL to our custom image input field.
+            jQuery(".lsp_upload_url").val(attachment.url);
+
+            // Do something with attachment.id and/or attachment.url here
+        });
+
+        // Finally, open the modal
+        file_frame.open();
     });
 
-    window.send_to_editor = function(html) {
-        imgurl = jQuery('img',html).attr('src');
-        jQuery(targetfield).val(imgurl);
-        tb_remove();
-    }
-    
-     jQuery('#toplevel_page_lsp_options ul li:last-child').css({'display':'none'});
 });

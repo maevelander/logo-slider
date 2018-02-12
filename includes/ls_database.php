@@ -35,7 +35,7 @@ function ls_create_table_sliders() {
 	} else {
 		add_option( "lsp_table_sliders_version", $lsp_table_sliders_version );
 	}
-	// @TODO Troubleshooting required for duplicate slider from the previous version of the plugin
+
 	//  Add data from Logo Slider Free Version
 	$lsp_prefix = $wpdb->prefix;
 

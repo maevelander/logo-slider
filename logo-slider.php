@@ -31,6 +31,8 @@ function wp_lsp_scripts() {
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'cp-script-handle', LOGO_SLIDER . 'includes/js/lsp_colorpicker.js', array( 'wp-color-picker' ), false, true );
 
+	wp_enqueue_media();
+
 	wp_enqueue_script( 'media-upload' );
 	wp_enqueue_script( 'thickbox' );
 
@@ -105,9 +107,14 @@ define( 'LS_SLIDER_CSS', get_option( 'lsp_slider_css' ) );
 add_action( 'admin_menu', 'ls_plugin_menu' );
 function ls_plugin_menu() {
 	add_menu_page( 'Logo Slider', 'Logo Slider', 'manage_options', 'ls_options', 'wp_ls_options', LOGO_SLIDER . "/includes/images/lsp_icon.png", 66 );
-	add_submenu_page( 'ls_options', 'Plugin Settings', 'Plugin Settings', 'manage_options', 'ls_settings', 'wp_ls_options' );
+
 	add_submenu_page( 'ls_options', 'Manage Logo Sliders', 'Manage Sliders', 'manage_options', 'manage_sliders', 'manage_logo_sliders' );
+
+	add_submenu_page( 'ls_options', 'Plugin Settings', 'Settings', 'manage_options', 'ls_settings', 'wp_ls_options' );
+
 	add_submenu_page( 'ls_options', '', '', 'manage_options', 'manage_images', 'manage_logo_images' );
+
+	remove_submenu_page('ls_options', 'ls_options');
 }
 
 //++++++++++++++_ Require Files
@@ -319,7 +326,7 @@ function lsp_css_style() {
         <?php
             }
         ?> width: <?php echo LS_SLIDER_WIDTH - 90; ?>px;
-            margin-left: -<?php echo $sp1; ?>px;
+/*            margin-left: -*/<?php //echo $sp1; ?>/*px;*/
         }
 
         .lsp_img_div {
