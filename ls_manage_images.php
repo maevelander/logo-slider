@@ -145,7 +145,7 @@
                                         <td>
                                             <input id="lsp_upload_button" class="lsp_upload_button" type="button"
                                                    name="upload_button"
-                                                   value="<?php _e( 'Browse Image', 'logo-slider' ); ?>">
+                                                   value="<?php _e( 'Choose Image', 'logo-slider' ); ?>">
                                         </td>
                                         <td>
                                             <input type="submit" name="lsp_save_images"

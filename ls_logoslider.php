@@ -28,7 +28,7 @@ function wp_lsp_sliders( $atts ) {
 			<?php
 		}
 		?>
-        <div class="lsp_slider_img">
+        <div id="logo-slider">
 			<?php
 			$get_slider_image = $wpdb->get_results( "Select * From " . $wpdb->prefix . "lsp_images Where slider_id = $slider_id Order By image_order ASC" );
 
@@ -155,7 +155,7 @@ function lsp_logo_slider( $lsp_short_name ) {
 			<?php
 		}
 		?>
-        <div class="lsp_slider_img">
+        <div id="logo-slider">
 			<?php
 			$get_slider_image = $wpdb->get_results( "Select * From " . $wpdb->prefix . "lsp_images Where slider_id = $slider_id Order By image_order ASC" );
 
@@ -288,7 +288,7 @@ function ls_old_shortcode( $atts ) {
 			<?php
 		}
 		?>
-        <div class="lsp_slider_img">
+        <div id="logo-slider">
 			<?php
 			$get_slider_image = $wpdb->get_results( "Select * From " . $wpdb->prefix . "lsp_images Where slider_id = $slider_id Order By image_order ASC" );
 
@@ -416,7 +416,7 @@ function logo_slider() {
 			<?php
 		}
 		?>
-        <div class="lsp_slider_img">
+        <div id="logo-slider">
 			<?php
 			$get_slider_image = $wpdb->get_results( "Select * From " . $wpdb->prefix . "lsp_images Where slider_id = $slider_id Order By image_order ASC" );
 

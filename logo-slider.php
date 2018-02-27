@@ -101,7 +101,7 @@ define( 'LS_SLIDER_AUTO', get_option( 'lsp_auto_slide' ) );
 define( 'LS_SLIDER_TIME', get_option( 'lsp_auto_slide_time' ) );
 define( 'LS_SLIDER_ARROW', get_option( 'lsp_slider_arrow' ) );
 define( 'LS_SLIDER_BGCOLOR', get_option( 'lsp_slider_bgcolor' ) );
-define( 'LS_SLIDER_CSS', get_option( 'lsp_slider_css' ) );
+define( 'LS_SLIDER_CSS', get_option( 'lsp_slider_css' ) ? get_option('lsp_slider_css') : "Your custom css goes here." );
 
 //++++++++++++++_ Plugin Menu
 add_action( 'admin_menu', 'ls_plugin_menu' );
@@ -279,7 +279,7 @@ function lsp_css_style() {
         <?php echo get_option('lsp_slider_css'); ?>
         .lsp_main_slider {
             background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-        / / float: left;
+            float: left;
             width: <?php echo LS_SLIDER_WIDTH; ?>px;
             height: <?php echo LS_SLIDER_HEIGHT; ?>px;
             padding: 8px;
@@ -319,7 +319,7 @@ function lsp_css_style() {
             overflow: hidden;
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 6%;
         <?php
             if(LS_SLIDER_EFFECT != 'carousel'){
         ?> text-align: center;
@@ -327,6 +327,22 @@ function lsp_css_style() {
             }
         ?> width: <?php echo LS_SLIDER_WIDTH - 90; ?>px;
 /*            margin-left: -*/<?php //echo $sp1; ?>/*px;*/
+        }
+
+        #logo-slider {
+            height: auto;
+            margin-top: -<?php echo LS_SLIDER_HEIGHT / 2; ?>px;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 6%;
+        <?php
+            if(LS_SLIDER_EFFECT != 'carousel'){
+        ?> text-align: center;
+        <?php
+            }
+        ?>width: <?php echo LS_SLIDER_WIDTH - 90; ?>px;
+            /* margin-left: -*/<?php //echo $sp1; ?>/*px;*/
         }
 
         .lsp_img_div {
@@ -363,7 +379,7 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-            / / float: left;
+                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -372,6 +388,23 @@ function lsp_css_style() {
             }
 
             .lsp_slider_img {
+            height: auto;
+            margin-left: -334px;
+            margin-top: -65px;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 668px;
+            <?php
+				if(LS_SLIDER_EFFECT != 'carousel'){
+            ?> text-align: center;
+            <?php
+				}
+            ?>
+            }
+
+            #logo-slider {
                 height: auto;
                 margin-left: -334px;
                 margin-top: -65px;
@@ -382,10 +415,10 @@ function lsp_css_style() {
                 width: 668px;
             <?php
 				if(LS_SLIDER_EFFECT != 'carousel'){
-			?> text-align: center;
+            ?> text-align: center;
             <?php
 				}
-			?>
+            ?>
             }
 
         }
@@ -405,7 +438,7 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-            / / float: left;
+                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -414,6 +447,23 @@ function lsp_css_style() {
             }
 
             .lsp_slider_img {
+            height: auto;
+            margin-left: -256px;
+            margin-top: -65px;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 512px;
+            <?php
+				if(LS_SLIDER_EFFECT != 'carousel'){
+            ?> text-align: center;
+            <?php
+				}
+            ?>
+            }
+
+            #logo-slider {
                 height: auto;
                 margin-left: -256px;
                 margin-top: -65px;
@@ -447,7 +497,7 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-            / / float: left;
+                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -456,6 +506,23 @@ function lsp_css_style() {
             }
 
             .lsp_slider_img {
+                height: auto;
+                margin-left: -176px;
+                margin-top: -65px;
+                overflow: hidden;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 346px;
+            <?php
+				if(LS_SLIDER_EFFECT != 'carousel'){
+            ?> text-align: center;
+            <?php
+				}
+            ?>
+            }
+
+            #logo-slider {
                 height: auto;
                 margin-left: -176px;
                 margin-top: -65px;
@@ -488,7 +555,7 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-            / / float: left;
+                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -497,6 +564,23 @@ function lsp_css_style() {
             }
 
             .lsp_slider_img {
+                height: auto;
+                margin-left: -91px;
+                margin-top: -65px;
+                overflow: hidden;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 185px;
+            <?php
+				if(LS_SLIDER_EFFECT != 'carousel'){
+            ?>text-align: center;
+            <?php
+				}
+            ?>
+            }
+
+            #logo-slider {
                 height: auto;
                 margin-left: -91px;
                 margin-top: -65px;
