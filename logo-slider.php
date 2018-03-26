@@ -73,6 +73,7 @@ function ls_logoslider_scripts() {
 
 	wp_register_script( 'jquery_cycle2_tile', LOGO_SLIDER . 'includes/js/lsp_jquery_tile.js', 'jquery', true );
 	wp_enqueue_script( 'jquery_cycle2_tile' );
+
 }
 
 //++++++++++++++_ Register Settings for Logo Slider Pro
@@ -279,7 +280,6 @@ function lsp_css_style() {
         <?php echo get_option('lsp_slider_css'); ?>
         .lsp_main_slider {
             background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-            float: left;
             width: <?php echo LS_SLIDER_WIDTH; ?>px;
             height: <?php echo LS_SLIDER_HEIGHT; ?>px;
             padding: 8px;
@@ -289,7 +289,7 @@ function lsp_css_style() {
 
         .lsp_slider_controls {
             position: relative;
-            top: 50%;
+            top: 65%;
             margin-top: -20px;
         }
 
@@ -379,7 +379,6 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -438,7 +437,6 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -497,7 +495,6 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
@@ -555,7 +552,6 @@ function lsp_css_style() {
 
             .lsp_main_slider {
                 background-color: <?php echo LS_SLIDER_BGCOLOR; ?>;
-                float: left;
                 height: <?php echo LS_SLIDER_HEIGHT; ?>px;
                 padding: 8px;
                 position: relative;
