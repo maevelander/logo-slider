@@ -36,14 +36,14 @@ $.fn.cycle = function( options ) {
             log = $.noop;
         }
 
-        log('--c2 init--');
+        //log('--c2 init--');
         data = container.data();
         for (var p in data) {
             // allow props to be accessed sans 'cycle' prefix and log the overrides
             if (data.hasOwnProperty(p) && /^cycle[A-Z]+/.test(p) ) {
                 val = data[p];
                 shortName = p.match(/^cycle(.*)/)[1].replace(/^[A-Z]/, lowerCase);
-                log(shortName+':', val, '('+typeof val +')');
+                //log(shortName+':', val, '('+typeof val +')');
                 data[shortName] = val;
             }
         }
@@ -596,11 +596,11 @@ $.fn.cycle.API = {
 }; // API
 
 // default logger
-$.fn.cycle.log = function log() {
-    /*global console:true */
-    if (window.console && console.log)
-        console.log('[cycle2] ' + Array.prototype.join.call(arguments, ' ') );
-};
+// $.fn.cycle.log = function log() {
+//     /*global console:true */
+//     if (window.console && console.log)
+//         console.log('[cycle2] ' + Array.prototype.join.call(arguments, ' ') );
+// };
 
 $.fn.cycle.version = function() { return 'Cycle2: ' + version; };
 
@@ -914,7 +914,7 @@ $.extend( c2.API, {
             return;
 
         opts.API.advanceSlide( count );
-        opts.API.trigger('cycle-next', [ opts ]).log('cycle-next');
+        //opts.API.trigger('cycle-next', [ opts ]).log('cycle-next');
     },
 
     prev: function() {
@@ -926,7 +926,7 @@ $.extend( c2.API, {
             return;
 
         opts.API.advanceSlide( count );
-        opts.API.trigger('cycle-prev', [ opts ]).log('cycle-prev');
+        //opts.API.trigger('cycle-prev', [ opts ]).log('cycle-prev');
     },
 
     destroy: function() {
