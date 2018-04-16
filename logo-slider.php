@@ -4,7 +4,7 @@
  * Plugin URI: http://www.wordpress.org/extend/plugins/logo-slider
  * Description: Add a logo slideshow carousel to your site quickly and easily.
  * Version: 1.4.8
- * Author: EnigmaWeb
+ * Author: Maeve Lander
  * Author URI: https://profiles.wordpress.org/enigmaweb/
  * Text Domain: logo-slider
  * Domain Path: /languages
@@ -289,7 +289,7 @@ function lsp_css_style() {
 
         .lsp_slider_controls {
             position: relative;
-            top: 65%;
+            top: 50%;
             margin-top: -20px;
         }
 
