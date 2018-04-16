@@ -3,7 +3,7 @@ Contributors: EnigmaWeb
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CEJ9HFWJ94BG4
 Tags: logo slide, logo slideshow, logo slide show, logo carousel, image carousel, logo slider, sponsors, logo showcase
 Requires at least: 3.1
-Tested up to: 4.7.4
+Tested up to: 4.9.5
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -11,7 +11,7 @@ Showcase logos in stylish slideshow carousel.
 
 == Description ==
 
-Add a reponsive logo slideshow carousel to your site quickly and easily. Embed in any post/page using shortcode `[logo-slider]` or in your theme `<?php logo_slider(); ?>`
+Add a responsive logo slideshow carousel to your site quickly and easily. Embed in any post/page using shortcode or in your theme `<?php logo_slider(); ?>`
 
 Perfect for displaying a list of sponsor or client logos.
 
@@ -24,19 +24,12 @@ Perfect for displaying a list of sponsor or client logos.
 *	Easy image uploader
 *	Ability to add links to each logo if you want
 *	Auto-slide option
+*	Multiple Slideshows - create as many sliders as you like across your site
+
 
 = Demo =
 
 [Click here](http://demo.enigmaweb.com.au/logo-slider/) to see Logo Slider in action.
-
-= Pro vs Free Version =
-
-This is the Free version of the plugin. [Get Pro Version](http://enigmaplugins.com/plugins/logo-slider-pro/) if you need the following advanced features:
-
-*	Mulitple Slideshows - create as many sliders as you like across your site
-*	Drag n Drop logo manager so you can easily re-order logos
-*	Fully Responsive Design
-*	Use WordPress Media Library for logo images
 
 == Installation ==
 
@@ -57,7 +50,7 @@ Add this code above to fuctions.php between the `<?php` and `?>` tags. A good pl
 
 = Can I do multiple slideshows? =
 
-This Free version just does 1 slider. If you want multiple sliders [get Pro version here](http://enigmaplugins.com/plugins/logo-slider-pro/).
+Yes
 
 = How can I customise the design? =
 
@@ -65,7 +58,11 @@ You can do some basic presentation adjustments via Logo Slider tab on the admin 
 
 = The layout is broken =
 
-It's most likely just a matter of tweaking the css. 
+It's most likely just a matter of tweaking the css.
+
+= Description says it's responsive but I'm testing and logos stack on top of each other =
+
+Check it on an actual mobile device. The logos appear stacked in browser console / simulators, but on an actual device it works fine.
 
 = Where can I get support for this plugin? =
 
@@ -79,7 +76,12 @@ If you've tried all the obvious stuff and it's still not working please request 
 == Changelog ==
 
 = 1.4.8 =
-* Pro features added.
+* Adds support for multiple sliders (merging pro features)
+* Images are now stored in media library
+* Fix for filepaths on https
+* Fix for when plugin directory name has been modified
+* CSS precedence improvements
+* jQuery Cycle logging issue fixed
 
 = 1.4.7 =
 * Animation issue fixed.
@@ -130,6 +132,14 @@ If you've tried all the obvious stuff and it's still not working please request 
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.4.8 =
+* Adds support for multiple sliders (merging pro features)
+* Images are now stored in media library
+* Fix for filepaths on https
+* Fix for when plugin directory name has been modified
+* CSS precedence improvements
+* jQuery Cycle logging issue fixed
 
 = 1.4.6 =
 * Updated text domain for the plugin repository's new translations
